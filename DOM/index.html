@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>购物清单</h1>
     <p>别忘了买这些东西</p>
-    <ul id="list">
-        <li>芒果</li>
-        <li>拖鞋</li>
-        <li>水杯</li>
-        <li>橘子</li>
+    <ul id="list" title="我是UL的描述文字">
+        <li class="item" url="img/manguo.jpg" onclick="cutImg(this)">芒果</li>
+        <li class="item" url="img/tuoxie.jpg" onclick="cutImg(this)">拖鞋</li>
+        <li class="item" url="img/shuibei.jpg" onclick="cutImg(this)">水杯</li>
+        <li class="item" url="img/juzi.jpg" onclick="cutImg(this)">橘子</li>
     </ul>
+    <img src="img/manguo.jpg" alt="" id="images">
 </body>
 <script>
-    console.log(typeof document.getElementById('list'))
+    console.log(typeof document.getElementById('list'))         //object
+    console.log(typeof document.getElementsByTagName('li'))     //object
+    console.log(typeof document.getElementsByClassName('item')) //object
+    let Elem = document.getElementById('list')
+    let title = Elem.getAttribute('title')
+    Elem.setAttribute('title','我是从新设置的值')
+    let title2 = Elem.getAttribute('title')
+    console.log(title,title2,'描述文字')
+    function cutImg(element){
+        let images = document.getElementById('images')
+        let url = element.getAttribute('url')
+        images.setAttribute('src',url)
+        
+    }
 </script>
+
 </html>

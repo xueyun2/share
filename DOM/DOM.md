@@ -5,6 +5,11 @@
 - [5. 获取元素](#5-获取元素)
   - [5.1. getEmelentById](#51-getemelentbyid)
   - [5.2. getElementsByTagName](#52-getelementsbytagname)
+  - [5.3. getElementsByClassName](#53-getelementsbyclassname)
+- [6. 设置元素属性](#6-设置元素属性)
+  - [6.1. getAttribute](#61-getattribute)
+  - [6.2. setAttribute](#62-setattribute)
+- [7. 小例子](#7-小例子)
 
 # 1. 节点
 ```html
@@ -19,11 +24,11 @@
 <body>
     <h1>购物清单</h1>
     <p>别忘了买这些东西</p>
-    <ul>
-        <li>芒果</li>
-        <li>拖鞋</li>
-        <li>水杯</li>
-        <li>橘子</li>
+    <ul id="list">
+        <li class="item">芒果</li>
+        <li class="item">拖鞋</li>
+        <li class="item">水杯</li>
+        <li class="item">橘子</li>
     </ul>
 </body>
 </html>
@@ -47,5 +52,33 @@
 console.log(typeof document.getElementById('list')) //object
 ```
 ## 5.2. getElementsByTagName
+接收一个标签名称，返回文档中的所有该标签的节点以数组的形式返回。
 ```javascript
+console.log(document.getElementsByTagName('li')) //object
+```
+## 5.3. getElementsByClassName
+接收一个`class`名，返回文档中的所有该`class`的节点以数组的形式返回。
+```javascript
+console.log(document.getElementsByClassName('item')) //object
+```
+# 6. 设置元素属性
+
+## 6.1. getAttribute
+此方法在元素对象上。
+获取元素属性方法接受一个**参数**，当前元素上的属性名称，**返回**元素属性值。
+```javascript
+let Elem = document.getElementById('list')
+let title = Elem.getAttribute('title')
+console.log(title, '描述文字')
+```
+## 6.2. setAttribute
+方法接收两个参数，**参数1**：需要设置的属性名称，**参数2**：要设置的值
+```javascript
+let Elem = document.getElementById('list')
+let title2 = Elem.setAttribute('title','我是新设置的值')
+console.log(title, '描述文字')
+```
+# 7. 小例子
+```javascript
+
 ```
