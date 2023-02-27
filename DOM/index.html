@@ -18,22 +18,32 @@
         <li class="item" url="img/juzi.jpg" onclick="cutImg(this)">橘子</li>
     </ul>
     <img src="img/manguo.jpg" alt="" id="images">
+    <ul id="insert"></ul>
 </body>
 <script>
-    console.log(typeof document.getElementById('list'))         //object
-    console.log(typeof document.getElementsByTagName('li'))     //object
-    console.log(typeof document.getElementsByClassName('item')) //object
-    let Elem = document.getElementById('list')
-    let title = Elem.getAttribute('title')
-    Elem.setAttribute('title','我是从新设置的值')
-    let title2 = Elem.getAttribute('title')
-    console.log(title,title2,'描述文字')
-    function cutImg(element){
-        let images = document.getElementById('images')
-        let url = element.getAttribute('url')
-        images.setAttribute('src',url)
-        
-    }
+    // console.log(typeof document.getElementById('list'))         //object
+    // console.log(typeof document.getElementsByTagName('li'))     //object
+    // console.log(typeof document.getElementsByClassName('item')) //object
+    // let Elem = document.getElementById('list')
+    // let title = Elem.getAttribute('title')
+    // Elem.setAttribute('title','我是从新设置的值')
+    // let title2 = Elem.getAttribute('title')
+    // console.log(title,title2,'描述文字')
+    // function cutImg(element){
+    //     let images = document.getElementById('images')
+    //     let url = element.getAttribute('url')
+    //     images.setAttribute('src',url)
+    // }
+    let element = document.getElementById('insert');
+    let fragment = document.createDocumentFragment();
+    let browsers = ['芒果', '西瓜', '拖鞋', '水杯'];
+    browsers.forEach(function (browser) {
+        let li = document.createElement('li');
+        li.textContent = `<div>${browser}</div>`;
+        fragment.appendChild(li);
+    });
+
+    element.appendChild(fragment);
 </script>
 
 </html>
