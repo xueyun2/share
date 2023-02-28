@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .goods-list li {
+            margin-bottom: 20px;
+            display: flex;
+        }
+
+        .goods-list .title {
+            margin-right: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class=""></div>
+    <div class="goods-list">
+        <h3>商品列表</h3>
+        <ul>
+            <li>
+                <div class="title">鼠标</div> <button class="add-btn">加入购物车</button>
+            </li>
+            <li>
+                <div class="title">小刀</div> <button class="add-btn">加入购物车</button>
+            </li>
+            <li>
+                <div class="title">香蕉</div> <button class="add-btn">加入购物车</button>
+            </li>
+            <li>
+                <div class="title">哈密瓜</div> <button class="add-btn">加入购物车</button>
+            </li>
+            <li>
+                <div class="title">茄子</div> <button class="add-btn">加入购物车</button>
+            </li>
+        </ul>
+    </div>
+    <div class="goods-list">
+        <h3>购物车列表</h3>
+        <ul id="cart-list">
+            <!-- <li class="goods-item">
+                <div class="title">苹果</div> <button class="delete-goods">删除</button>
+            </li> -->
+        </ul>
+    </div>
+    <script>
+        let addBtn = document.getElementsByClassName('add-btn')
+        let cartList = document.getElementById('cart-list')
+        for (let i = 0; i < addBtn.length; i++) {
+            addBtn[i].addEventListener('click', function () {
+                let Li = document.createElement('li')
+                let goodsList = cartList.getElementsByClassName('goods-item')
+                Li.className = 'goods-item'
+                Li.innerHTML = `<div class="title">${this.previousElementSibling.innerText}</div> <button class="delete-goods">删除</button> `
+                if (goodsList.length > 0) {
+                    cartList.insertBefore(Li, cartList.firstElementChild)
+                } else {
+                    console.log('向后插入')
+                    cartList.appendChild(Li)
+                }
+            })
+        }
+        cartList.addEventListener('click', function (e) {
+            e.target.classList.forEach((item,index)=>{
+                if(item == 'delete-goods'){
+                    cartList.removeChild(e.target.parentElement)
+                    return false
+                }
+            })
+        })
+        
+    </script>
+</body>
+
+</html>
