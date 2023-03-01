@@ -15,6 +15,13 @@
         .goods-list .title {
             margin-right: 40px;
         }
+        .task-item{
+            display: flex;
+        }
+        .task-item .del{
+
+            margin-left: 20px;
+        }
     </style>
 </head>
 
@@ -48,32 +55,89 @@
             </li> -->
         </ul>
     </div>
+    <h3>添加任务</h3>
+    <div>
+        <input id="inp" type="text" value="这是我输入的值" placeholder="请输入任务名称">
+        <button type="button" class="btn-add" id="btn-add">添加</button>
+    </div>
+    <h3>任务列表</h3>
+    <ul id="task-list">
+        <li class="task-item">
+            <input type="checkbox"  class="check">
+            <div class="title">标题</div>
+            <button class="del">删除</button>
+        </li>
+    </ul>
     <script>
-        let addBtn = document.getElementsByClassName('add-btn')
-        let cartList = document.getElementById('cart-list')
-        for (let i = 0; i < addBtn.length; i++) {
-            addBtn[i].addEventListener('click', function () {
-                let Li = document.createElement('li')
-                let goodsList = cartList.getElementsByClassName('goods-item')
-                Li.className = 'goods-item'
-                Li.innerHTML = `<div class="title">${this.previousElementSibling.innerText}</div> <button class="delete-goods">删除</button> `
-                if (goodsList.length > 0) {
-                    cartList.insertBefore(Li, cartList.firstElementChild)
-                } else {
-                    console.log('向后插入')
-                    cartList.appendChild(Li)
-                }
-            })
-        }
-        cartList.addEventListener('click', function (e) {
+    
+        
+        // taskList.insertBefore(Li, taskList.firstElementChild)
+        let anniu = document.getElementById('btn-add')
+        anniu.addEventListener('click', function () {
+            let inp = document.getElementById('inp')
+            let Li = document.createElement('li')
+        let taskList = document.getElementById('task-list')
+
+        // let won = taskList.firstElementChild
+        Li.className = 'task-item'
+        Li.innerHTML = `<input type="checkbox" class="check"> <div class="title">${inp.value}</div> <button class="delete-goods">删除</button> `
+          taskList.appendChild(Li)
+
+      
+            
+        })
+        // taskList.appendChild(Li)
+        let check = document.getElementById('task-list')
+          check.addEventListener('click', function (e){
+            // console.log(e.target.classList)
             e.target.classList.forEach((item,index)=>{
-                if(item == 'delete-goods'){
-                    cartList.removeChild(e.target.parentElement)
+                if(item == 'check'){
+                //    console.log(e.target.checked)
+                 if(e.target.checked){
+                    e.target.nextElementSibling.style.color='red'
+                    console.log(e.target.nextElementSibling)
+                 }
                     return false
                 }
             })
-        })
-        
+          })
+
+
+
+
+
+
+
+
+
+
+
+        // let addBtn = document.getElementsByClassName('add-btn')
+        // let cartList = document.getElementById('cart-list')
+        // for (let i = 0; i < addBtn.length; i++) {
+        //     addBtn[i].addEventListener('click', function () {
+        //         let Li = document.createElement('li')
+        //         let goodsList = cartList.getElementsByClassName('goods-item')
+        //         Li.className = 'goods-item'
+        //         Li.innerHTML = `<div class="title">${this.previousElementSibling.innerText}</div> <button class="delete-goods">删除</button> `
+        //         if (goodsList.length > 0) {
+        //             cartList.insertBefore(Li, cartList.firstElementChild)
+        //         } else {
+        //             console.log('向后插入')
+        //             cartList.appendChild(Li)
+        //         }
+        //     })
+        // }
+       
+        // cartList.addEventListener('click', function (e) {
+        //     console.log(e.target.classList)
+        //     e.target.classList.forEach((item,index)=>{
+        //         if(item == 'delete-goods'){
+        //             cartList.removeChild(e.target.parentElement)
+        //             return false
+        //         }
+        //     })
+        // })
     </script>
 </body>
 
