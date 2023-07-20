@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./js/layui/css/layui.css">
+</head>
+
+<body>
+    <div class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机</label>
+            <div class="layui-input-block">
+                <input type="tel" name="phone" lay-verify="required|phone" class="layui-input" id="validate-phone">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">验证码</label>
+            <div class="layui-input-inline">
+                <input type="text" name="vercode" lay-verify="required" class="layui-input">
+            </div>
+            <div class="layui-inline">
+                <button type="button" class="layui-btn layui-btn-primary" id="validate-get-vercode">获取验证码</button>
+            </div>
+        </div>
+        <script src="./js/layui/layui.js"></script>
+        <script>
+            layui.use(function () {
+                var $ = layui.$;
+                var form = layui.form;
+                var layer = layui.layer;
+                $('#validate-get-vercode').on('click', function () {
+                    let is = form.validate('#validate-phone');
+                    if (is) {
+                        layer.msg('手机号规则验证通过');
+                        // 此处可继续书写「发送验证码」等后续逻辑
+                        // …
+                    }
+                })
+            })
+        </script>
+</body>
+
+</html>

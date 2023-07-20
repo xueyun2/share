@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./js/layui/css/layui.css">
+</head>
+
+<body>
+    <div class="layui-form">
+        <input type="text" placeholder="请输入密码" name="password" id="reg-password" class="layui-input" lay-verify="required">
+        <input type="text" placeholder="请确认密码" name="passwords" class="layui-input" lay-verify="required|confirmPassword">
+        <button class="layui-btn" type="button" lay-filter="demo-submit" lay-submit>提交</button>
+    </div>
+    <script src="./js/layui/layui.js"></script>
+    <script>
+        layui.use(function () {
+            var form = layui.form;
+            var $ = layui.jquery;
+            // form.verify({
+            //     confirmPassword:function(val,elem){
+            //         let val1 = $('#reg-password').val()
+            //         if(val!=val1){
+            //             return '两次密码不一致'
+            //         }
+            //     }
+            // })
+            form.verify({
+                // 确认密码，
+                confirmPassword: function (value, item) {
+                    //获取上一个input中输入的密码值。
+                    var passwordValue = $('#reg-password').val();
+                    //使用条件语句判断需要确认的值是否一致。
+                    if (value !== passwordValue) {
+                        return '两次密码输入不一致';
+                    }
+                }
+            })
+            form.on('submit(demo-submit)', function (data) {
+                var field = data.field;
+                var elem = data.elem;
+                console.log(data, '查看')
+            })
+        })
+    </script>
+</body>
+
+</html>

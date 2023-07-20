@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./js/layui/css/layui.css">
+</head>
+
+<body>
+    <div class="layui-btn-container" style="margin-bottom: 6px; text-align: center;">
+        <button type="button" class="layui-btn layui-btn-normal" id="form-setval">赋值</button>
+        <button type="button" class="layui-btn layui-btn-normal" id="form-getval">取值</button>
+    </div>
+    <div class="layui-form" lay-filter="demo-val-filter">
+        <input type="text" name="username" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+        <input type="text" name="username2" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+    </div>
+    <script src="./js/layui/layui.js"></script>
+    <script>
+        layui.use(function () {
+            var $ = layui.$;
+            var form = layui.form;
+            var layer = layui.layer;
+            $('#form-setval').on('click', function () {
+                var setData = form.val('demo-val-filter', {
+                    username: '我是新赋值',
+                    username2:'我是帝国'
+                })
+            })
+            $('#form-getval').on('click', function () {
+                // 获取表单的所有值
+                var getData = form.val('demo-val-filter')
+                console.log(getData,'获取的数据')
+            });
+            
+        })
+    </script>
+</body>
+
+</html>
